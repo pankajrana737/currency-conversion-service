@@ -31,8 +31,8 @@ public CurrencyConversionBean getCurrencyConversionbean(@PathVariable String fro
 	return new CurrencyConversionBean(currencyBean.getId(), currencyBean.getFrom(),
 			currencyBean.getTo(), currencyBean.getconvertionMultiple(),quantity, currencyBean.getconvertionMultiple().multiply(quantity),currencyBean.getPort());
 }
-
-//suing feign cleint method
+//http://localhost:8100/currency-converter-feign/from/USD/to/INR/quantity/10
+//using feign client method
 @GetMapping("/currency-converter-feign/from/{from}/to/{to}/quantity/{quantity}")
 public CurrencyConversionBean getCurrencyConversionbeanFeign(@PathVariable String from,
 		@PathVariable String to,@PathVariable BigDecimal quantity) {
