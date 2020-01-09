@@ -12,10 +12,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 //hard code url to resolve this use ribbon load balancer
 // comment this @FeignClient(name = "currency-exchange-service",url = "localhost:8000")
 // adding @RibbonClient(name = "-service name")
-@FeignClient(name = "currency-exchange-service")
+//for zull chnage nameing server to zull app name from application.proptei zull project.
+// change  this @FeignClient(name = "currency-exchange-service")  to @FeignClient(name = "netflix-zuul-api-gateway-server")
+// netflix-zuul-api-gateway-server
+@FeignClient(name = "netflix-zuul-api-gateway-server")
 @RibbonClient(name = "currency-exchange-service")
 //@FeignClient(name = "currency-exchange-service",url = "localhost:8000")
 public interface CurrencyExchangeServiceProxy {
-	@GetMapping("/currency-exchange/from/{from}/to/{to}")
+	// e.g http://localhost:8765/currency-exchange-service/currency-exchange/from/USD/to/INR
+	// chnage mapping uri @GetMapping("/currency-exchange/from/{from}/to/{to}")
+	@GetMapping("/currency-exchange-service/currency-exchange/from/{from}/to/{to}")
  public	CurrencyConversionBean reteriveExchangeValue(@PathVariable("from") String from, @ PathVariable("to") String to) ;
 }
